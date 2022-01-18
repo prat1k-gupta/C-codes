@@ -1,51 +1,40 @@
 #include<stdio.h>
 #include<string.h>
-int top=-1,l=-1,star=0,alpha=0;
-char st[100];
+//EAS*Y*QUE***ST***IO*N***
+int top=-1,l=0;
+char st[100],st2[100],val;
+void display(void);
 void push(char c);
-void pop(char z);
+char pop();
 int main(){
-    int j=0;
     char arr[100];
-    printf("input elements");
+    printf("input elements: ");
     scanf("%[^\n]s",&arr);
     int size = strlen(arr);
-    while(j<size){
+    for (int j = 0; j < size; j++){
         if(arr[j]>='A' && arr[j]<='Z'){
-            top++;
-            printf("value of top in if is %d\n",top);
+            push(arr[j]);
         }
         else{
-            printf("value of top in else is %d\n",top);
-            if(arr[top]!='*'){
-                pop(arr[top]);
-                top++;
-            }
-            else{
-                alpha++;
-                star++;
-                printf("no. of star are: %d",star);
-                printf("no. of alpha are: %d",alpha);
-                int temp=top;
-                temp=temp-star-alpha;
-                pop(arr[temp]);
-
-            }
+                st2[l]=pop();
+                l++;
         }
-        j++;
-    }
+        }
     display();
     return 0;
 }
-void pop(char z){
-        l++;
-        st[l]=z;
-        printf("pop[%c]\n",st[l]); 
+void push(char c){
+    top++;
+    st[top]=c;
+}
+char pop(){
+        val=st[top];
+        top--;
+        return val;            
 }
 void display(){
-    for (int i = 0; i < strlen(st); i++)
+    for (int i = 0; i < strlen(st2); i++)
     {
-        printf("%c",st[i]);
-    }
-    
+        printf("%c",st2[i]);
+    } 
 }

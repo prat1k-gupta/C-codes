@@ -8,35 +8,39 @@ int main(){
     scanf("%d",&n);
     int i,j,sum=0, sum2=0,k=0;
     float rowsum[100],colsum[100];
-    //row sum 
     for (i = 0; i < m; i++)
     {
         for (j = 0; j < n; j++)
         {
             printf("element[%d][%d]:",i,j);
             scanf("%d",&arr[i][j]);
-            sum =sum+arr[i][j];
         }
-        rowsum[i]=sum;
-        sum = 0;
-        printf("\n");
-    }
-    //col sum 
+    }    
+    //row sum 
     for (i = 0; i < m; i++)
     {
         for (j = 0; j < n; j++)
         {
-            sum =sum+arr[j][i];
+            sum =sum+*(*(arr+i)+j);
+        }
+        rowsum[i]=sum;
+        sum = 0;
+    }
+    //col sum //m row n column
+    for (i = 0; i < n; i++)
+    {
+        for (j = 0; j < m; j++)
+        {
+            sum =sum+ *(*(arr+j)+i);
         }
         colsum[i]=sum;
         sum = 0;
-        printf("\n");
     }
     for (i = 0; i < m; i++)
     {   
         for (j = 0; j < n; j++)
         {   
-            printf("\t%d\t",arr[i][j]);
+            printf("\t%d\t",*(*(arr+i)+j));
         }
         float rowavg=rowsum[i]/m;
         printf("avg r%d : %.1f\t",i+1,rowavg);
@@ -45,7 +49,7 @@ int main(){
     printf("\n");
     for (int i = 0; i < n; i++) {
            float colavg=colsum[i]/m;
-        printf("avg c%d : %.1f\t",i+1,colavg);
+           printf("avg c%d : %.1f\t",i+1,colavg);
     }
     return 0;
 }
