@@ -29,7 +29,7 @@ int main(){
 }
 void traversal(struct node *ptr){
     while(ptr!=NULL){    
-    printf("%d",ptr->data);
+    printf("%d\t",ptr->data);
     ptr = ptr->next;
     }
 }
@@ -45,7 +45,7 @@ struct node *insertatmid(struct node *head,int data, int index){
     int i=0;
     while(i!=index-1){
         p = p -> next;
-        i++;
+        i++; 
     }
     ptr->data = data;
     ptr->next = p->next;
