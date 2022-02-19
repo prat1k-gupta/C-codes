@@ -45,13 +45,15 @@ void traverse(struct node *head){
     struct node *ptr;
     ptr = head;
     if(ptr->next== head){
+        printf("The required list is : \n");
         printf("%d",ptr->data);
     }
     else if(ptr->next != head){
-        printf("%d",ptr->data);
+        printf("The required list is : \n");
+        printf("%d\t",ptr->data);
         ptr=ptr->next;
         while(ptr!= head){
-            printf("%d",ptr->data);
+            printf("%d\t",ptr->data);
             ptr =ptr->next;
         }
     }

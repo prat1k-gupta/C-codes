@@ -16,7 +16,6 @@ int main()
     }
     
     reverse(&arr[0],&arr[4]);
-    
     printf("\n");
     for (int i = 0; i < 5; i++) {
         printf("%d\t",arr[i]);

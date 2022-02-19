@@ -16,6 +16,8 @@ void insertatend(struct node *ptr);
 void insertatmid(struct node *ptr);
 //DELETE FIRST NODE
 struct node * deletefirstnode(struct node *ptr);
+//DELETE LAST NODE 
+void deletelastnode(struct node *ptr);
 //GLOBAL VARIABLE
 int item;
 //MAIN FUNCTION
@@ -23,7 +25,7 @@ int main(){
     int choice;
     struct node * head = (struct node * )malloc(sizeof(struct node));
     do{
-        printf("\n 1. CREATE \n 2. TRAVERSE \n 3. INSERT AT BEGINNING\n 4. INSERT AT END\n 5. INSERT AT POSITION\n 6. DELETE NODE\n 7.EXIT\n\n");
+        printf("\n 1. CREATE \n 2. TRAVERSE \n 3. INSERT AT BEGINNING\n 4. INSERT AT END\n 5. INSERT AT POSITION\n 6. DELETE FROM FRONT\n 7. DELETE FROM END\n 8.EXIT\n\n");
         printf("enter your choice: ");
         scanf("%d",&choice);
         switch (choice)
@@ -51,12 +53,15 @@ int main(){
             head = deletefirstnode(head);
             break;
         case 7:
+            deletelastnode(head);
+            break;
+        case 8:
             break;
         default:
             printf("enter a valid choice!!");
             break;
         }
-    }while(choice!=7);
+    }while(choice!=8);
     return 0;
 }
 struct node * createnew(struct node *h, int s){
@@ -111,7 +116,7 @@ void insertatend(struct node *ptr){
     ptr->next = newnode;
 }
 void insertatmid(struct node *ptr){
-    int index; 
+    int index; //2
     printf("enter the position you want to add the node to: ");
     scanf("%d",&index);
     printf("enter the data: ");
@@ -119,7 +124,7 @@ void insertatmid(struct node *ptr){
     struct node * newnode= (struct node * )malloc(sizeof(struct node));
     newnode->data = item;
     
-    int i=1;
+    int i=0;
     while(i<index-1){
         ptr = ptr->next;
         i++;
@@ -131,4 +136,13 @@ void insertatmid(struct node *ptr){
 struct node * deletefirstnode(struct node *ptr){
     ptr = ptr->next;
     return ptr;
+}
+void deletelastnode(struct node *ptr){
+    struct node *nxt;
+    nxt = ptr->next;
+    while(nxt->next != NULL){
+        ptr=ptr->next;
+        nxt= nxt->next;
+    }
+    ptr->next = NULL;
 }

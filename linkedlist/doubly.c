@@ -26,8 +26,9 @@ int pstn;
 int main(){
     int choice;
     struct node * head = (struct node *)malloc(sizeof(struct node));
+     printf("\n 1. CREATE NEW\n 2. DISPLAY\n 3. INSERT AT FRONT\n 4. INSERT AT END\n 5. INSERT AT POSITION\n 6. DELETE FROM FRONT\n 7. DELETE FROM END\n 8. DELETE FROM SPECIFIED POSITION\n 9. EXIT\n");
     do{
-        printf("\n 1. CREATE NEW\n 2. DISPLAY\n 3. INSERT AT FRONT\n 4. INSERT AT END\n 5. INSERT AT POSITION\n 6. DELETE FROM FRONT\n 7. DELETE FROM END\n 8. DELETE FROM SPECIFIED POSITION\n 9. EXIT\n");
+        printf("\n");
         printf("enter the choice: ");
         scanf("%d",&choice);
         switch (choice)
@@ -37,26 +38,32 @@ int main(){
             printf("Enter the size of linked list :");
             scanf("%d",&size);
             createnew(head,size);
+            traverse(head);
             break;
         case 2: 
             traverse(head);
             break;
         case 3: 
             head = insertatfrnt(head);
+            traverse(head);
             break;
         case 4:
             insertatend(head);
+            traverse(head);
             break;
         case 5: 
             printf("Enter the position you want to add the element : ");
             scanf("%d",&pstn);
             insertatpstn(head,pstn);
+            traverse(head);
             break;
         case 6: 
             head = deletefrnt(head);
+            traverse(head);
             break;
         case 7:
             deleteend(head);
+            traverse(head);
             break;
         case 8: 
             printf("Enter the position you want to add the element : ");
@@ -169,9 +176,7 @@ void deleteend(struct node *ptr){
     while(ptr->next!=NULL){
         ptr = ptr->next;
     }
-    printf("ptr is currently at: %d",ptr->data);
     ptr = ptr->previous;
-    printf("ptr is at: %d",ptr->data);
     ptr->next= NULL;
 }
 //DELETE AT SPECIFIED POSITON
